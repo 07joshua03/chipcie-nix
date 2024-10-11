@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 let
-  domjudge_url = "dj.ch.tudelft.nl";
+  domjudge_url = "dj.chipcie.ch.tudelft.nl";
 in
 {
   networking.proxy.default = "http://127.0.0.1:3128";
@@ -39,11 +39,8 @@ in
       table inet nat {
         chain output {
           type nat hook output priority 100;
-          ip protocol tcp meta skuid contestant tcp dport 80 redirect to :3128
-          ip protocol tcp meta skuid contestant tcp dport 443 redirect to :3128
-
-          ip6 protocol tcp meta skuid contestant tcp dport 80 redirect to :3128
-          ip6 protocol tcp meta skuid contestant tcp dport 443 redirect to :3128
+          meta skuid contestant tcp dport 80 redirect to :3128
+          meta skuid contestant tcp dport 443 redirect to :3128
         }
       }
       # Disable logging
@@ -56,6 +53,7 @@ in
     '';
   };
 
+  systemd.services.squid.after = [ "resolvconf.service" ];
   services.squid = {
     enable = true;
     configText = ''
@@ -68,6 +66,8 @@ in
       cache_store_log stdio:/var/log/squid/store.log
 
       cache_effective_user squid squid
+
+      dns_nameservers 8.8.8.8 1.1.1.1
 
       acl SSL_ports port 443
       acl Safe_ports port 8080
@@ -96,6 +96,7 @@ in
       acl allowed_urls dstdomain .hostnames.chipcie.ch.tudelft.nl
       acl allowed_urls dstdomain .pdns.chipcie.ch.tudelft.nl
       acl allowed_urls dstdomain .bing.com
+      acl allowed_urls dstdomain .youtube.com
       acl allowed_urls dstdomain localhost
 
       http_access allow allowed_urls

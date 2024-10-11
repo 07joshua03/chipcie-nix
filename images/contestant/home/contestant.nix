@@ -1,6 +1,9 @@
 { ... }:
 
 {
+  imports = [
+    ../browser.nix
+  ];
   home.file = {
     # "wallpaper" = {
     #   source = builtins.readFile "../files/wallpaper.png";
