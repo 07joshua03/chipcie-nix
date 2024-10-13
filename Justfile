@@ -9,3 +9,6 @@ build BUILD:
   nix build .#{{BUILD}}
   cp result/nixos.img {{BUILD}}.img
   chmod +rw {{BUILD}}.img
+
+ansible PLAYBOOK:
+  ansible-playbook -i ./localinventory --diff --become -u icpcadmin {{PLAYBOOK}}
