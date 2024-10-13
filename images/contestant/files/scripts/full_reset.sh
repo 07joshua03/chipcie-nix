@@ -13,9 +13,6 @@ lpadmin -x ContestPrinter
 # clear the user
 /icpc/scripts/deleteUser.sh
 
-# make sure the firewall is on
-ufw --force enable
-
 rm -f /icpc/setup_complete
 rm -f /icpc/TEAM
 rm -f /icpc/TEAMID

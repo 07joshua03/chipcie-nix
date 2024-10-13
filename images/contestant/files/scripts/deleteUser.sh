@@ -25,5 +25,3 @@ rm -rf /var/jetbrains/*/system/caches/*
 echo "Recreating contestant user"
 useradd -d /home/contestant -m contestant -G lpadmin,teams -s /bin/bash
 passwd -d contestant
-
-systemctl restart ufw

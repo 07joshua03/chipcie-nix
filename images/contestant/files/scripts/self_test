@@ -127,9 +127,7 @@ echo "$PRINTERS"
 echo
 echo "${BLUE}Connectivity Test${RESET}"
 print_check "Checking if the firewall is enabled"
-ufw status 2>&1 | grep 'Status: active' >/dev/null
-check_return $?
-
+check_service 'nftables'
 
 print_check "Making sure the squid proxy is running"
 check_service 'squid'

@@ -43,10 +43,11 @@ rec {
         target = "wallpaper.png";
       };
 
-
+      # Used when resetting contestant user
       contestant-home = {
         source = ./files/home_dirs/contestant;
         target = "skel";
+        mode = "0644";
       };
       on_boot = {
         source = ./files/scripts/on_boot.sh;
@@ -57,12 +58,6 @@ rec {
       self_test = {
         source = ./files/scripts/self_test;
         target = "icpc/scripts/self_test";
-        mode = "0755";
-      };
-
-      checkFirewall = {
-        source = ./files/scripts/checkFirewall.sh;
-        target = "icpc/scripts/checkFirewall.sh";
         mode = "0755";
       };
 
@@ -81,18 +76,6 @@ rec {
       desktop_checksums = {
         source = ./files/scripts/desktop_checksums.sh;
         target = "icpc/scripts/desktop_checksums.sh";
-        mode = "0755";
-      };
-
-      disableFirewall = {
-        source = ./files/scripts/disableFirewall.sh;
-        target = "icpc/scripts/disableFirewall.sh";
-        mode = "0755";
-      };
-
-      enableFirewall = {
-        source = ./files/scripts/enableFirewall.sh;
-        target = "icpc/scripts/enableFirewall.sh";
         mode = "0755";
       };
 
