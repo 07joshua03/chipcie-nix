@@ -10,9 +10,12 @@
     serviceConfig = {
       Type = "oneshot";
       ExecStart = ''
-        /usr/bin/nice -n 19 /usr/bin/find / -path /proc -prune -o -path /sys -prune -o -print
-        /usr/bin/nice -n 19 /icpc/scripts/vmtouch.sh
+        nice -n 19 find / -path /proc -prune -o -path /sys -prune -o -print
+        nice -n 19 /etc/icpc/scripts/vmtouch.sh
       '';
+    };
+    environment = lib.mkForce {
+      PATH = "/run/current-system/sw/bin";
     };
   };
 }

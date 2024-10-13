@@ -10,7 +10,7 @@ if [[ $# -ne 0 && $# -ne 2 ]]; then
     exit 1
 fi
 
-sed -i '/machine {{ domjudge_url }}/d' /icpc/netrc
+sed -i '/machine dj.chipcie.ch.tudelft.nl/d' /icpc/netrc
 
 if [[ $# -eq 2 ]]; then
   DJTEAM=$1

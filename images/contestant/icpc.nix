@@ -49,17 +49,8 @@ rec {
         target = "skel";
         mode = "0644";
       };
-      on_boot = {
-        source = ./files/scripts/on_boot.sh;
-        target = "icpc/scripts/on_boot.sh";
-        mode = "0755";
-      };
 
-      self_test = {
-        source = ./files/scripts/self_test;
-        target = "icpc/scripts/self_test";
-        mode = "0755";
-      };
+      # For the scripts, it is not possible to create the entire folder (with it being writable, SEE: https://github.com/NixOS/nixpkgs/issues/200744)
 
       check_battery = {
         source = ./files/scripts/check_battery.sh;
@@ -82,6 +73,96 @@ rec {
       expandPartition = {
         source = ./files/scripts/expandPartition.sh;
         target = "icpc/scripts/expandPartition.sh";
+        mode = "0755";
+      };
+
+      firstLogin = {
+        source = ./files/scripts/firstLogin.sh;
+        target = "icpc/scripts/firstLogin.sh";
+        mode = "0755";
+      };
+
+      full_reset = {
+        source = ./files/scripts/full_reset.sh;
+        target = "icpc/scripts/full_reset.sh";
+        mode = "0755";
+      };
+
+      icpc_setup = {
+        source = ./files/scripts/icpc_setup.sh;
+        target = "icpc/scripts/icpc_setup.sh";
+        mode = "0755";
+      };
+
+      on_boot = {
+        source = ./files/scripts/on_boot.sh;
+        target = "icpc/scripts/on_boot.sh";
+        mode = "0755";
+      };
+
+      print_pdf = {
+        source = ./files/scripts/print_pdf.py;
+        target = "icpc/scripts/print_pdf.py";
+        mode = "0755";
+      };
+
+      printfile = {
+        source = ./files/scripts/printfile.sh;
+        target = "icpc/scripts/printfile.sh";
+        mode = "0755";
+      };
+
+      self_test = {
+        source = ./files/scripts/self_test;
+        target = "icpc/scripts/self_test";
+        mode = "0755";
+      };
+
+      set_domjudge_creds = {
+        source = ./files/scripts/set_domjudge_creds.sh;
+        target = "icpc/scripts/set_domjudge_creds.sh";
+        mode = "0755";
+      };
+
+      set_hostname = {
+        source = ./files/scripts/set_hostname.sh;
+        target = "icpc/scripts/set_hostname.sh";
+        mode = "0755";
+      };
+
+      set_printer = {
+        source = ./files/scripts/set_printer.sh;
+        target = "icpc/scripts/set_printer.sh";
+        mode = "0755";
+      };
+
+      set_room = {
+        source = ./files/scripts/set_room.sh;
+        target = "icpc/scripts/set_room.sh";
+        mode = "0755";
+      };
+
+      set_teamid = {
+        source = ./files/scripts/set_teamid.sh;
+        target = "icpc/scripts/set_teamid.sh";
+        mode = "0755";
+      };
+
+      set_teamname = {
+        source = ./files/scripts/set_teamname.sh;
+        target = "icpc/scripts/set_teamname.sh";
+        mode = "0755";
+      };
+
+      version_check = {
+        source = ./files/scripts/version_check.sh;
+        target = "icpc/scripts/version_check.sh";
+        mode = "0755";
+      };
+
+      vmtouch = {
+        source = ./files/scripts/vmtouch.sh;
+        target = "icpc/scripts/vmtouch.sh";
         mode = "0755";
       };
 
