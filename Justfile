@@ -1,3 +1,6 @@
+set export
+ANSIBLE_HOST_KEY_CHECKING := "False"
+
 default:
   @just --list
 
@@ -11,4 +14,5 @@ build BUILD:
   chmod +rw {{BUILD}}.img
 
 ansible PLAYBOOK:
+  export ANSIBLE_HOST_KEY_CHECKING=False
   ansible-playbook -i ./localinventory --diff --become -u icpcadmin {{PLAYBOOK}}

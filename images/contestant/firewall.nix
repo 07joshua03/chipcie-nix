@@ -8,6 +8,15 @@ in
 
   boot.kernelParams = [ "net.ipv4.ip_forward=1" "net.ipv6.conf.all.forwarding=1" "net.ipv4.conf.all.send_redirects=0" ];
 
+  # environment.etc = {
+  # "autologin" = {
+  # text = ''
+  # Placeholder
+  # '';
+  # target = "squid/autologin.conf";
+  # mode = "0644";
+  # };
+  # };
 
   networking.nftables = {
     enable = true;
@@ -98,6 +107,11 @@ in
       acl allowed_urls dstdomain .bing.com
       acl allowed_urls dstdomain .youtube.com
       acl allowed_urls dstdomain localhost
+
+      acl autologin url_regex ^http://${domjudge_url}/login
+      acl autologin url_regex ^https://${domjudge_url}/login
+
+      include /etc/squid/autologin.conf
 
       http_access allow allowed_urls
       http_access deny all

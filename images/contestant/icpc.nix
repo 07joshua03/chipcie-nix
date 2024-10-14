@@ -35,6 +35,25 @@ rec {
     "Z /icpc/scripts 755 icpcadmin icpcadmin -"
     "f /icpc/netrc 644 icpcadmin icpcadmin -"
   ];
+  environment.etc = {
+    # config = {
+    #   source = ./files/autologin-addon/config.js;
+    # target = "icpc/firefox-addon/config.js";
+    # mode = "0644";
+    # };
+
+    background = {
+      source = ./files/autologin-addon/background.js;
+      target = "icpc/firefox-addon/background.js";
+      mode = "0644";
+    };
+
+    manifest = {
+      source = ./files/autologin-addon/manifest.json;
+      target = "icpc/firefox-addon/manifest.json";
+      mode = "0644";
+    };
+  };
 
   environment.etc =
     {

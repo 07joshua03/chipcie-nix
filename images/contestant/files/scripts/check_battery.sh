@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ac_file="/sys/class/power_supply/AC/online"
 if [ ! -f "$ac_file" ]; then
